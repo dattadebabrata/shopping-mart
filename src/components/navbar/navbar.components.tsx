@@ -12,9 +12,17 @@ import {
   Divider,
   Box,
   Badge,
+  ListItemIcon,
 } from "@mui/material";
 import { HiMenuAlt2 } from "react-icons/hi";
 import { FaShoppingCart } from "react-icons/fa";
+import { AiFillHome } from "react-icons/ai";
+import { GiClothes } from "react-icons/gi";
+import { BsHeartHalf } from "react-icons/bs";
+import { MdManageAccounts, MdEmojiEvents } from "react-icons/md";
+import { SiGravatar } from "react-icons/si";
+import { BiLogOut } from "react-icons/bi";
+
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
@@ -41,7 +49,7 @@ const Navbar = () => {
             aria-label="menu"
             onClick={toggleDrawer(true)}
           >
-            <HiMenuAlt2 />
+            <MenuBar />
           </StyledIconButton>
           <Link to={"/"}>
             <StyledBox>
@@ -84,42 +92,77 @@ const Navbar = () => {
       {/*Drawer for small screen*/}
       <Drawer anchor="left" open={isDrawerOpen} onClose={toggleDrawer(false)}>
         <DrawerList>
-          {!token ? (
-            <>
+          <>
+            <StyledLink to={"/"}>
               <ListItem button>
-                <Link to={"/"}>
-                  <ListItemText primary="Login" />
-                </Link>
+                <ListItemIcon>
+                  <AiFillHome />
+                </ListItemIcon>
+                <ListItemText primary="Home" />
               </ListItem>
+            </StyledLink>
+
+            <StyledLink to={"/allproducts"}>
               <ListItem button>
-                <Link to={"/register"}>
-                  <ListItemText primary="Signup" />
-                </Link>
+                <ListItemIcon>
+                  <GiClothes />
+                </ListItemIcon>
+                <ListItemText primary="All Products" />
               </ListItem>
-            </>
-          ) : (
-            <>
+            </StyledLink>
+
+            <StyledLink to={"/wishlist"}>
               <ListItem button>
-                <Link to={"/events"}>
-                  <ListItemText primary="Events" />
-                </Link>
+                <ListItemIcon>
+                  <BsHeartHalf />
+                </ListItemIcon>
+                <ListItemText primary="Wishlist" />
               </ListItem>
+            </StyledLink>
+
+            <StyledLink to={"/account"}>
               <ListItem button>
-                <Link to={"/addevent"}>
-                  <ListItemText primary="Add Event" />
-                </Link>
+                <ListItemIcon>
+                  <MdManageAccounts />
+                </ListItemIcon>
+                <ListItemText primary="Account" />
               </ListItem>
+            </StyledLink>
+
+            <StyledLink to={"/events"}>
               <ListItem button>
-                <Link to={"/logs"}>
-                  <ListItemText primary="Applied Logs" />
-                </Link>
+                <ListItemIcon>
+                  <MdEmojiEvents />
+                </ListItemIcon>
+                <ListItemText primary="Events" />
               </ListItem>
-              <Divider />
-              <ListItem onClick={() => {}} button>
-                <ListItemText primary="Logout" />
+            </StyledLink>
+
+            <Divider />
+
+            <StyledLink to={""}>
+              <ListItem button>
+                <ListItemIcon>
+                  <FaShoppingCart />
+                </ListItemIcon>
+                <ListItemText primary="Cart" />
               </ListItem>
-            </>
-          )}
+            </StyledLink>
+
+            <ListItem button>
+              <ListItemIcon>
+                <SiGravatar />
+              </ListItemIcon>
+              <ListItemText primary="Debabrata Datta" />
+            </ListItem>
+
+            <ListItem onClick={() => {}} button>
+              <ListItemIcon>
+                <BiLogOut />
+              </ListItemIcon>
+              <ListItemText primary="Logout" />
+            </ListItem>
+          </>
         </DrawerList>
       </Drawer>
     </>
@@ -164,7 +207,7 @@ const StyledButton = styled(Button)`
 
 const DrawerList = styled(List)`
   && {
-    width: 200px;
+    width: 350px;
     padding: 0;
   }
 `;
@@ -189,9 +232,28 @@ const RowLinks = styled.div`
   }
 `;
 
+const StyledLink = styled(Link)`
+  && {
+    text-decoration: none;
+    color: black !important;
+    & :hover {
+      transition: 0.3s;
+      letter-spacing: 1px;
+    }
+  }
+`;
+
 const ShoppingCart = styled(FaShoppingCart)`
   && {
     width: 25px;
+    height: auto;
+  }
+`;
+
+const MenuBar = styled(HiMenuAlt2)`
+  && {
+    width: 40px;
+    margin-right: 10px;
     height: auto;
   }
 `;
