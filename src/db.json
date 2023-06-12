@@ -7,5 +7,84 @@
     "https://www.netmeds.com/images/cms/aw_rbslider/slides/1664373768_World-heart-day_Wellness-main-banner.jpg",
     "https://www.netmeds.com/images/cms/aw_rbslider/slides/1686321495_Web_Home.jpg",
     "https://www.netmeds.com/images/cms/aw_rbslider/slides/1671640109_Web_Home_Kareena.jpg"
+  ],
+  "best_sellers": [
+    {
+      "id": 1,
+      "title": "Pack of 4 Men solid Round Neck Polyester T-Shirt",
+      "image_url": "https://rukminim1.flixcart.com/image/832/832/l3j2cnk0/t-shirt/2/w/p/l-723-2-5-7-8-ftx-original-imagemgrpafdug8v.jpeg?q=70",
+      "price": 200,
+      "mrp": 350,
+      "tags": ["Men", "Solid"]
+    },
+    {
+      "id": 2,
+      "title": "Men Striped Polo Neck pure cotton T-Shirt",
+      "image_url": "https://rukminim1.flixcart.com/image/832/832/xif0q/t-shirt/0/d/s/m-mst001-vmp-casuals-original-imagq57s8npkfy8u.jpeg?q=70",
+      "price": 189,
+      "mrp": 250,
+      "tags": ["pure cotton", "T-Shirt"]
+    },
+    {
+      "id": 3,
+      "title": "Men Solid Round Neck Polyester T-Shirt",
+      "image_url": "https://rukminim1.flixcart.com/image/832/832/xif0q/t-shirt/q/2/i/m-s-r-b-w-farbot-original-imagjuxy9kn5qyam.jpeg?q=70",
+      "price": 449,
+      "mrp": 500,
+      "tags": ["Round Neck", "Polyester"]
+    },
+    {
+      "id": 4,
+      "title": "Men Solid Round Neck Polyester T-Shirt",
+      "image_url": "https://rukminim1.flixcart.com/image/832/832/xif0q/t-shirt/q/2/i/m-s-r-b-w-farbot-original-imagjuxy9kn5qyam.jpeg?q=70",
+      "price": 449,
+      "mrp": 500,
+      "tags": ["Men", "Round Neck"]
+    },
+    {
+      "id": 5,
+      "title": "Men Solid Round Neck Polyester T-Shirt",
+      "image_url": "https://rukminim1.flixcart.com/image/832/832/xif0q/t-shirt/q/2/i/m-s-r-b-w-farbot-original-imagjuxy9kn5qyam.jpeg?q=70",
+      "price": 449,
+      "mrp": 500,
+      "tags": ["Solid", "Round Neck"]
+    },
+    {
+      "id": 6,
+      "title": "Men Solid Round Neck Polyester T-Shirt",
+      "image_url": "https://rukminim1.flixcart.com/image/832/832/xif0q/t-shirt/q/2/i/m-s-r-b-w-farbot-original-imagjuxy9kn5qyam.jpeg?q=70",
+      "price": 250,
+      "mrp": 500,
+      "tags": ["Men", "T-Shirt"]
+    }
+  ],
+  "deals_of_the_day": [
+    {
+      "id": 1,
+      "title": "Pack of 4 Men solid Round Neck Polyester T-Shirt",
+      "image_url": "https://rukminim1.flixcart.com/image/832/832/l3j2cnk0/t-shirt/2/w/p/l-723-2-5-7-8-ftx-original-imagemgrpafdug8v.jpeg?q=70",
+      "price": 200,
+      "mrp": 350,
+      "tags": ["Men", "T-Shirt"],
+      "exclusive": "Best Seller"
+    },
+    {
+      "id": 2,
+      "title": "Men Striped Polo Neck pure cotton T-Shirt",
+      "image_url": "https://rukminim1.flixcart.com/image/832/832/xif0q/t-shirt/0/d/s/m-mst001-vmp-casuals-original-imagq57s8npkfy8u.jpeg?q=70",
+      "price": 189,
+      "mrp": 250,
+      "tags": ["Striped", "pure cotton"],
+      "exclusive": "Trending"
+    },
+    {
+      "id": 3,
+      "title": "Men Solid Round Neck Polyester T-Shirt",
+      "image_url": "https://rukminim1.flixcart.com/image/832/832/xif0q/t-shirt/q/2/i/m-s-r-b-w-farbot-original-imagjuxy9kn5qyam.jpeg?q=70",
+      "price": 449,
+      "mrp": 500,
+      "tags": ["Round Neck", "Polyester"],
+      "exclusive": "Good Deals"
+    }
   ]
 }
