@@ -37,20 +37,14 @@ const Navbar = () => {
     setIsDrawerOpen(open);
   };
 
+
+
   const token = true;
 
   return (
     <>
       <StyledNavbar>
         <StyledToolbar>
-          <StyledIconButton
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            onClick={toggleDrawer(true)}
-          >
-            <MenuBar />
-          </StyledIconButton>
           <Link to={"/"}>
             <StyledBox>
               <img
@@ -87,10 +81,18 @@ const Navbar = () => {
             <StyledButton color="inherit">Debabrata Datta</StyledButton>
             <StyledButton color="inherit">Logout</StyledButton>
           </RowLinks>
+          <StyledIconButton
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              onClick={toggleDrawer(true)}
+          >
+            <MenuBar />
+          </StyledIconButton>
         </StyledToolbar>
       </StyledNavbar>
       {/*Drawer for small screen*/}
-      <Drawer anchor="left" open={isDrawerOpen} onClose={toggleDrawer(false)}>
+      <Drawer anchor="right" open={isDrawerOpen} onClose={toggleDrawer(false)}>
         <DrawerList>
           <>
             <StyledLink to={"/"}>
@@ -191,6 +193,8 @@ const StyledBox = styled(Box)`
 
 const StyledIconButton = styled(IconButton)`
   && {
+    position: absolute;
+    right: 10px;
     @media (min-width: 769px) {
       display: none;
     }
@@ -216,7 +220,7 @@ const StyledToolbar = styled(Toolbar)`
   && {
     justify-content: space-between;
     @media (max-width: 768px) {
-      justify-content: flex-start;
+      justify-content: center;
     }
   }
 `;
