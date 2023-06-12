@@ -10,6 +10,7 @@ import {
   Button,
   IconButton,
   Box,
+  Tooltip,
 } from "@mui/material";
 import { BsHeart, BsHeartFill } from "react-icons/bs";
 import styled from "styled-components";
@@ -43,15 +44,17 @@ const ProductCard: React.FC<ProductType> = ({
       </CardMedia>
       <Divider />
       <StyledCardContent>
-        <Typography
-            noWrap
-          sx={{ fontSize: 16 }}
-          gutterBottom
-          variant="h5"
-          component="div"
-        >
-          {title}
-        </Typography>
+        <Tooltip title={title} followCursor>
+            <Typography
+                noWrap
+                sx={{ fontSize: 16 }}
+                gutterBottom
+                variant="h5"
+                component="div"
+            >
+                {title}
+            </Typography>
+        </Tooltip>
         <Stack
           direction="row"
           justifyContent="space-between"
@@ -94,7 +97,7 @@ const ProductCard: React.FC<ProductType> = ({
                   marginRight: "3px",
                   // padding: "2px",
                   minWidth: "30px",
-                    height:"100%"
+                  height: "100%",
                 }}
               >
                 -
@@ -107,14 +110,17 @@ const ProductCard: React.FC<ProductType> = ({
                   marginLeft: "3px",
                   // padding: "2px",
                   minWidth: "30px",
-                    height:"100%"
+                  height: "100%",
                 }}
               >
                 +
               </Button>
             </AlreadyInCart>
           ) : (
-            <Button variant="contained" sx={{ fontSize: 10,marginLeft:"0 !important",padding:"6px" }}>
+            <Button
+              variant="contained"
+              sx={{ fontSize: 10, marginLeft: "0 !important", padding: "6px" }}
+            >
               Add to Cart
             </Button>
           )}
