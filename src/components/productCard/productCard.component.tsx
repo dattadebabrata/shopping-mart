@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Card,
   CardMedia,
@@ -15,6 +15,11 @@ import {
 import { BsHeart, BsHeartFill } from "react-icons/bs";
 import styled from "styled-components";
 import { calculateDiscount } from "../../utils/discountCalculator";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  addItemToCart,
+  removeItemFromCart,
+} from "../../store/cart/cart.action";
 
 interface ProductType {
   id: number;
@@ -26,17 +31,20 @@ interface ProductType {
   exclusive?: string | undefined;
 }
 
-const ProductCard: React.FC<ProductType> = ({
-  id,
-  title,
-  image_url,
-  price,
-  mrp,
-  tags,
-  exclusive,
-}) => {
-  const alreadyCart = true;
+const ProductCard: React.FC<ProductType> = (props) => {
+  const { id, title, image_url, price, mrp, tags, exclusive } = props;
+  const dispatch = useDispatch();
+  const { cart } = useSelector((store: any) => store.cart);
+  const alreadyCart = cart.find((item: any) => item.id === id);
+
+  // const alreadyCart = false;
   const alreadyWishlist = false;
+  const handleAddToCart = () => {
+    dispatch(addItemToCart(cart, props));
+  };
+  const handleRemoveFromCart = () => {
+    dispatch(removeItemFromCart(cart, props));
+  };
   return (
     <Card sx={{ maxWidth: 400, margin: "auto" }}>
       <CardMedia sx={{ height: 330 }} image={image_url} title="Product">
@@ -45,15 +53,15 @@ const ProductCard: React.FC<ProductType> = ({
       <Divider />
       <StyledCardContent>
         <Tooltip title={title} followCursor>
-            <Typography
-                noWrap
-                sx={{ fontSize: 16 }}
-                gutterBottom
-                variant="h5"
-                component="div"
-            >
-                {title}
-            </Typography>
+          <Typography
+            noWrap
+            sx={{ fontSize: 16 }}
+            gutterBottom
+            variant="h5"
+            component="div"
+          >
+            {title}
+          </Typography>
         </Tooltip>
         <Stack
           direction="row"
@@ -62,7 +70,14 @@ const ProductCard: React.FC<ProductType> = ({
         >
           <Box sx={{ display: "flex", overflow: "scroll", gap: "0 5px" }}>
             {tags.map((tag) => {
-              return <StyledChip label={tag} size="small" variant="outlined" />;
+              return (
+                <StyledChip
+                  key={tag}
+                  label={tag}
+                  size="small"
+                  variant="outlined"
+                />
+              );
             })}
           </Box>
           <IconButton aria-label="add to favorites">
@@ -91,6 +106,7 @@ const ProductCard: React.FC<ProductType> = ({
           {alreadyCart ? (
             <AlreadyInCart direction="row" alignItems="center">
               <Button
+                onClick={handleRemoveFromCart}
                 variant="contained"
                 sx={{
                   fontSize: 10,
@@ -102,8 +118,9 @@ const ProductCard: React.FC<ProductType> = ({
               >
                 -
               </Button>
-              <span>9</span>
+              <span>{alreadyCart.quantity}</span>
               <Button
+                onClick={handleAddToCart}
                 variant="contained"
                 sx={{
                   fontSize: 10,
@@ -118,6 +135,7 @@ const ProductCard: React.FC<ProductType> = ({
             </AlreadyInCart>
           ) : (
             <Button
+              onClick={handleAddToCart}
               variant="contained"
               sx={{ fontSize: 10, marginLeft: "0 !important", padding: "6px" }}
             >

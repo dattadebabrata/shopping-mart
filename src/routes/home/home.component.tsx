@@ -15,7 +15,7 @@ const Home: React.FC = () => {
         <Typography
           variant="h5"
           align="left"
-          sx={{ textDecoration: "underline",margin:"20px 0" }}
+          sx={{ textDecoration: "underline", margin: "20px 0" }}
         >
           Best Seller
         </Typography>
@@ -23,7 +23,7 @@ const Home: React.FC = () => {
         <Grid container spacing={2}>
           {best_sellers.map((product) => {
             return (
-              <Grid item xs={12} sm={6} md={4} lg={3}>
+              <Grid key={product.id} item xs={12} sm={6} md={4} lg={3}>
                 <ProductCard {...product} />
               </Grid>
             );
@@ -35,14 +35,14 @@ const Home: React.FC = () => {
         <Typography
           variant="h5"
           align="left"
-          sx={{ textDecoration: "underline",margin:"20px 0" }}
+          sx={{ textDecoration: "underline", margin: "20px 0" }}
         >
           Deals of the Day
         </Typography>
         <Grid container spacing={2}>
           {deals_of_the_day.map((product) => {
             return (
-              <Grid item xs={12} sm={6} md={4} lg={3}>
+              <Grid key={product.id} item xs={12} sm={6} md={4} lg={3}>
                 <ProductCard {...product} />
               </Grid>
             );
