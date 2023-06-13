@@ -20,6 +20,7 @@ import {
   addItemToCart,
   removeItemFromCart,
 } from "../../store/cart/cart.action";
+import { addRemoveToWishList } from "../../store/wishlist/wishlist.action";
 
 interface ProductType {
   id: number;
@@ -35,15 +36,20 @@ const ProductCard: React.FC<ProductType> = (props) => {
   const { id, title, image_url, price, mrp, tags, exclusive } = props;
   const dispatch = useDispatch();
   const { cart } = useSelector((store: any) => store.cart);
+  const { wishlist } = useSelector((store: any) => store.wishlist);
   const alreadyCart = cart.find((item: any) => item.id === id);
+  const alreadyWishlist = wishlist.find((item: any) => item.id === id);
 
   // const alreadyCart = false;
-  const alreadyWishlist = false;
+  // const alreadyWishlist = false;
   const handleAddToCart = () => {
     dispatch(addItemToCart(cart, props));
   };
   const handleRemoveFromCart = () => {
     dispatch(removeItemFromCart(cart, props));
+  };
+  const handleWishlist = () => {
+    dispatch(addRemoveToWishList(wishlist, props));
   };
   return (
     <Card sx={{ maxWidth: 400, margin: "auto" }}>
@@ -80,7 +86,7 @@ const ProductCard: React.FC<ProductType> = (props) => {
               );
             })}
           </Box>
-          <IconButton aria-label="add to favorites">
+          <IconButton onClick={handleWishlist} aria-label="add to favorites">
             {alreadyWishlist ? (
               <BsHeartFill color="red" />
             ) : (
