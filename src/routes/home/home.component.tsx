@@ -55,7 +55,7 @@ const Home: React.FC = () => {
 
 export default Home;
 
-const StyledContainer = styled(Container)`
+export const StyledContainer = styled(Container)`
   && {
     padding: 5px 10px;
     margin: 20px 0;
