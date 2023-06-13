@@ -8,15 +8,14 @@ interface LinearImagesProps {
 }
 interface ImageListType {
   imageList: string[];
-  intervalTime:number;
+  intervalTime: number;
 }
 
-const Carousal: React.FC<ImageListType> = ({ imageList,intervalTime }) => {
+const Carousal: React.FC<ImageListType> = ({ imageList, intervalTime }) => {
   const [xAxis, setXaxis] = useState(0);
   useEffect(() => {
     let interval: any;
     interval = setInterval(() => {
-      console.log(xAxis);
       if (xAxis === imageList.length - 1) {
         setXaxis(0);
         return;
@@ -40,9 +39,9 @@ const Carousal: React.FC<ImageListType> = ({ imageList,intervalTime }) => {
     setXaxis((prev) => prev - 1);
   };
 
-  const changeImage=(pos:number)=>{
-    setXaxis(pos)
-  }
+  const changeImage = (pos: number) => {
+    setXaxis(pos);
+  };
 
   return (
     <CarousalContainer>
@@ -59,7 +58,13 @@ const Carousal: React.FC<ImageListType> = ({ imageList,intervalTime }) => {
       </RightArrow>
       <ImageNavigator>
         {imageList.map((_, pos) => {
-          return <NavigateButton key={pos} onClick={()=>changeImage(pos)} color={`${xAxis===pos?"black":""}`} />;
+          return (
+            <NavigateButton
+              key={pos}
+              onClick={() => changeImage(pos)}
+              color={`${xAxis === pos ? "black" : ""}`}
+            />
+          );
         })}
       </ImageNavigator>
     </CarousalContainer>
