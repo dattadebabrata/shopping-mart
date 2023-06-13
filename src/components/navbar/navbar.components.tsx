@@ -14,6 +14,8 @@ import {
   Badge,
   ListItemIcon,
 } from "@mui/material";
+import {useSelector} from "react-redux";
+import {getCartQuantity} from "../../utils/getCartQuantity";
 import { HiMenuAlt2 } from "react-icons/hi";
 import { FaShoppingCart } from "react-icons/fa";
 import { AiFillHome } from "react-icons/ai";
@@ -26,6 +28,7 @@ import { BiLogOut } from "react-icons/bi";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  const {cart} = useSelector((store: any) => store.cart);
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
   const toggleDrawer = (open: any) => (event: any) => {
     if (
@@ -71,7 +74,7 @@ const Navbar = () => {
             <Link to={"/cart"}>
               <Badge
                 sx={{ marginRight: "10px" }}
-                badgeContent={60}
+                badgeContent={getCartQuantity(cart)||0}
                 max={9}
                 color="primary"
               >
