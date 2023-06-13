@@ -22,7 +22,7 @@ import {
 } from "../../store/cart/cart.action";
 import { addRemoveToWishList } from "../../store/wishlist/wishlist.action";
 
-interface ProductType {
+export interface ProductType {
   id: number;
   title: string;
   image_url: string;
@@ -30,6 +30,7 @@ interface ProductType {
   mrp: number;
   tags: string[];
   exclusive?: string | undefined;
+  quantity?: number;
 }
 
 const ProductCard: React.FC<ProductType> = (props) => {
@@ -39,9 +40,6 @@ const ProductCard: React.FC<ProductType> = (props) => {
   const { wishlist } = useSelector((store: any) => store.wishlist);
   const alreadyCart = cart.find((item: any) => item.id === id);
   const alreadyWishlist = wishlist.find((item: any) => item.id === id);
-
-  // const alreadyCart = false;
-  // const alreadyWishlist = false;
   const handleAddToCart = () => {
     dispatch(addItemToCart(cart, props));
   };

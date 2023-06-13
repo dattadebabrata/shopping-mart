@@ -1,7 +1,8 @@
 import { AnyAction } from "redux";
 import { wishlistTypes } from "./wishlist.types";
+import { ProductType } from "../../components/productCard/productCard.component";
 const INITIAL_STATE = {
-  wishlist: [],
+  wishlist: [] as ProductType[],
 };
 
 export const wishlistReducer = (state = INITIAL_STATE, action: AnyAction) => {
