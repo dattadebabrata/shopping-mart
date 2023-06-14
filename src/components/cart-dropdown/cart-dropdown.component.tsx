@@ -13,7 +13,7 @@ import { MdDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 interface ContainerProps {
-  isOpen: boolean;
+  open: boolean;
 }
 const CartDropdown: React.FC<{ isOpen: boolean }> = ({ isOpen }) => {
   const { cart } = useSelector((store: any) => store.cart);
@@ -28,7 +28,7 @@ const CartDropdown: React.FC<{ isOpen: boolean }> = ({ isOpen }) => {
     dispatch(removeSelectedItem(cart, item));
   };
   return (
-    <Container isOpen={isOpen}>
+    <Container open={isOpen}>
       {cart.length > 0 ? (
         <>
           <Box sx={{ overflow: "scroll", maxHeight: "350px" }}>
@@ -97,7 +97,9 @@ const CartDropdown: React.FC<{ isOpen: boolean }> = ({ isOpen }) => {
           </Link>
         </>
       ) : (
-        <Typography noWrap color="primary">Cart is empty</Typography>
+        <Typography noWrap color="primary">
+          Cart is empty
+        </Typography>
       )}
     </Container>
   );
@@ -112,13 +114,13 @@ const Container = styled.div<ContainerProps>`
   left: 50%;
   transform: translate(-50%, 0);
   //width: 250px;
-  width: ${({ isOpen }) => (isOpen ? "250px" : "0")};
+  width: ${({ open }) => (open ? "250px" : "0")};
   height: auto;
   z-index: 1;
   border-radius: 4px;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  visibility: ${({ isOpen }) => (isOpen ? "visible" : "hidden")};
+  visibility: ${({ open }) => (open ? "visible" : "hidden")};
   overflow: hidden;
   transition: 0.5s ease-in-out;
 `;
