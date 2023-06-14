@@ -13,9 +13,11 @@ import {
   Box,
   Badge,
   ListItemIcon,
+  ClickAwayListener,
 } from "@mui/material";
-import {useSelector} from "react-redux";
-import {getCartQuantity} from "../../utils/getCartQuantity";
+import { useSelector } from "react-redux";
+import { getCartQuantity } from "../../utils/getCartQuantity";
+import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 import { HiMenuAlt2 } from "react-icons/hi";
 import { FaShoppingCart } from "react-icons/fa";
 import { AiFillHome } from "react-icons/ai";
@@ -28,7 +30,7 @@ import { BiLogOut } from "react-icons/bi";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  const {cart} = useSelector((store: any) => store.cart);
+  const { cart } = useSelector((store: any) => store.cart);
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
   const toggleDrawer = (open: any) => (event: any) => {
     if (
@@ -40,9 +42,12 @@ const Navbar = () => {
     setIsDrawerOpen(open);
   };
 
-
-
   const token = true;
+
+  const [isOpen, setIsOpen] = React.useState(false);
+  const handleDropdownMenu = () => {
+    setIsOpen((prevState) => !prevState);
+  };
 
   return (
     <>
@@ -71,24 +76,39 @@ const Navbar = () => {
             </Link>
           </RowLinks>
           <RowLinks>
-            <Link to={"/cart"}>
-              <Badge
-                sx={{ marginRight: "10px" }}
-                badgeContent={getCartQuantity(cart)||0}
-                max={9}
-                color="primary"
+            <ClickAwayListener onClickAway={() => setIsOpen(false)}>
+              <Box
+                sx={{
+                  position: "relative",
+                  display: "inline",
+                  minWidth: "25px",
+                }}
               >
-                <ShoppingCart />
-              </Badge>
-            </Link>
+                <Button
+                  onClick={handleDropdownMenu}
+                  color="inherit"
+                  sx={{ minWidth: "25px" }}
+                >
+                  <Badge
+                    sx={{ marginRight: "10px" }}
+                    badgeContent={getCartQuantity(cart) || 0}
+                    max={9}
+                    color="primary"
+                  >
+                    <ShoppingCart />
+                  </Badge>
+                </Button>
+                <CartDropdown isOpen={isOpen} />
+              </Box>
+            </ClickAwayListener>
             <StyledButton color="inherit">Debabrata Datta</StyledButton>
             <StyledButton color="inherit">Logout</StyledButton>
           </RowLinks>
           <StyledIconButton
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              onClick={toggleDrawer(true)}
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            onClick={toggleDrawer(true)}
           >
             <MenuBar />
           </StyledIconButton>
@@ -230,6 +250,7 @@ const StyledToolbar = styled(Toolbar)`
 
 const RowLinks = styled.div`
   && {
+    position: relative;
     @media (max-width: 768px) {
       display: none;
     }

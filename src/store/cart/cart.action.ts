@@ -30,6 +30,10 @@ const removeCartItem = (cartItems: any, itemToRemove: any) => {
   });
 };
 
+const selectedItemToRemove = (cartItems: any, itemToRemove: any) => {
+  return cartItems.filter((cartItem: any) => cartItem.id !== itemToRemove.id);
+};
+
 export const addItemToCart = (cartItems: any, itemToAdd: any) => {
   const newCartItem = addCartItem(cartItems, itemToAdd);
   return {
@@ -42,6 +46,14 @@ export const removeItemFromCart = (cartItems: any, itemToRemove: any) => {
   const newCartItem = removeCartItem(cartItems, itemToRemove);
   return {
     type: cartTypes.REMOVE_FROM_CART,
+    payload: newCartItem,
+  };
+};
+
+export const removeSelectedItem = (cartItems: any, itemToRemove: any) => {
+  const newCartItem = selectedItemToRemove(cartItems, itemToRemove);
+  return {
+    type: cartTypes.REMOVE_SELECTED_ITEM,
     payload: newCartItem,
   };
 };

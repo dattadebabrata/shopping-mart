@@ -187,7 +187,7 @@ const TagChip = styled(Chip)`
   }
 `;
 
-const AlreadyInCart = styled(Stack)`
+export const AlreadyInCart = styled(Stack)`
   && {
     margin-left: 0;
     background-color: #1665c0;
