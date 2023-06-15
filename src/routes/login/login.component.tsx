@@ -5,7 +5,13 @@ import { TextField, Typography, Button } from "@mui/material";
 import * as Yup from "yup";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { FcGoogle } from "react-icons/fc";
+// import { signInWithGooglePopup } from "../../utils/firebase/firebase.utils";
+import { useDispatch } from "react-redux";
+import { googleSignInStart } from "../../store/user/user.action";
+
 const Login: React.FC = () => {
+  const dispatch = useDispatch();
   const validationSchema = Yup.object({
     email: Yup.string().email("Invalid email").required("Email is required"),
     password: Yup.string()
@@ -23,6 +29,9 @@ const Login: React.FC = () => {
     validateOnBlur: true,
     validationSchema,
   });
+  const handleGoogleLogin = () => {
+    dispatch(googleSignInStart());
+  };
   return (
     <FormContainer title="Login">
       <form onSubmit={formik.handleSubmit}>
@@ -74,6 +83,15 @@ const Login: React.FC = () => {
           Login
         </Button>
       </form>
+      <Button
+        variant="text"
+        fullWidth
+        sx={{ marginTop: "20px" }}
+        endIcon={<FcGoogle />}
+        onClick={handleGoogleLogin}
+      >
+        Continue with
+      </Button>
     </FormContainer>
   );
 };
