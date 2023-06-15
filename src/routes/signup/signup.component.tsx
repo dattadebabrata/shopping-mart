@@ -6,7 +6,10 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
 import FormContainer from "../../components/form-Container/form-container.component";
+import { useDispatch } from "react-redux";
+import { signUpStart } from "../../store/user/user.action";
 const Signup: React.FC = () => {
+  const dispatch = useDispatch();
   const validationSchema = Yup.object({
     name: Yup.string().required("Name is required"),
     email: Yup.string().email("Invalid email").required("Email is required"),
@@ -20,8 +23,8 @@ const Signup: React.FC = () => {
       email: "",
       password: "",
     },
-    onSubmit: (values) => {
-      console.log(values);
+    onSubmit: async (values) => {
+      dispatch(signUpStart(values));
     },
     validateOnBlur: true,
     validationSchema,
