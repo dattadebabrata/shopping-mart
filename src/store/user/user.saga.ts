@@ -8,6 +8,8 @@ import {
   signInFailed,
   emailSignInStart,
   signUpSuccess,
+  signOutSuccess,
+  signOutFailed,
 } from "./user.action";
 
 import {
@@ -88,6 +90,14 @@ export function* signInAfterSignUp({
 }: any) {
   yield* call(getSnapshotFromUserAuth, user, additionalDetails);
 }
+export function* signOut() {
+  try {
+    yield* call(signOutUser);
+    yield* put(signOutSuccess());
+  } catch (error) {
+    yield* put(signOutFailed(error as Error));
+  }
+}
 export function* onGoogleSignInStart() {
   yield* takeLatest(USER_ACTION_TYPES.GOOGLE_SIGN_IN_START, signInWithGoogle);
 }
@@ -104,11 +114,16 @@ export function* onSignUpSuccess() {
   yield* takeLatest(USER_ACTION_TYPES.SIGN_UP_SUCCESS, signInAfterSignUp);
 }
 
+export function* onSignOutStart() {
+  yield* takeLatest(USER_ACTION_TYPES.SIGN_OUT_START, signOut);
+}
+
 export function* userSagas() {
   yield* all([
     call(onGoogleSignInStart),
     call(onEmailSignInStart),
     call(onSignUpStart),
     call(onSignUpSuccess),
+    call(onSignOutStart),
   ]);
 }

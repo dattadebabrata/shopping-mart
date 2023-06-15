@@ -62,3 +62,22 @@ export const signUpStart = (userCredentials: {
     payload: payload,
   };
 };
+
+export const signOutStart = () => {
+  return {
+    type: USER_ACTION_TYPES.SIGN_OUT_START,
+  };
+};
+
+export const signOutSuccess = () => {
+  return {
+    type: USER_ACTION_TYPES.SIGN_OUT_SUCCESS,
+  };
+};
+
+export const signOutFailed = (error: Error) => {
+  return {
+    type: USER_ACTION_TYPES.SIGN_OUT_FAILED,
+    payload: error,
+  };
+};

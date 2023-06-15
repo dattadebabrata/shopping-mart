@@ -15,7 +15,7 @@ import {
   ListItemIcon,
   ClickAwayListener,
 } from "@mui/material";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { getCartQuantity } from "../../utils/getCartQuantity";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 import { HiMenuAlt2 } from "react-icons/hi";
@@ -26,11 +26,15 @@ import { BsHeartHalf } from "react-icons/bs";
 import { MdManageAccounts, MdEmojiEvents } from "react-icons/md";
 import { SiGravatar } from "react-icons/si";
 import { BiLogOut } from "react-icons/bi";
-
+import { signOutStart } from "../../store/user/user.action";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  const { cart } = useSelector((store: any) => store.cart);
+  const dispatch = useDispatch();
+  const { cart: userCart, user } = useSelector((store: any) => store);
+  const { cart } = userCart;
+  const { currentUser } = user;
+  console.log(currentUser);
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
   const toggleDrawer = (open: any) => (event: any) => {
     if (
@@ -47,6 +51,10 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const handleDropdownMenu = () => {
     setIsOpen((prevState) => !prevState);
+  };
+
+  const handleLogOut = () => {
+    dispatch(signOutStart());
   };
 
   return (
@@ -101,8 +109,20 @@ const Navbar = () => {
                 <CartDropdown isOpen={isOpen} />
               </Box>
             </ClickAwayListener>
-            <StyledButton color="inherit">Debabrata Datta</StyledButton>
-            <StyledButton color="inherit">Logout</StyledButton>
+            {currentUser ? (
+              <>
+                <StyledButton color="inherit">
+                  {currentUser.displayName}
+                </StyledButton>
+                <StyledButton onClick={handleLogOut} color="inherit">
+                  Logout
+                </StyledButton>
+              </>
+            ) : (
+              <Link to="/login">
+                <StyledButton color="inherit">Login</StyledButton>
+              </Link>
+            )}
           </RowLinks>
           <StyledIconButton
             edge="start"
