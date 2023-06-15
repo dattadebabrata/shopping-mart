@@ -6,9 +6,10 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
 import FormContainer from "../../components/form-Container/form-container.component";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { signUpStart } from "../../store/user/user.action";
 const Signup: React.FC = () => {
+  const { isLoading } = useSelector((store: any) => store.user);
   const dispatch = useDispatch();
   const validationSchema = Yup.object({
     name: Yup.string().required("Name is required"),
@@ -96,7 +97,12 @@ const Signup: React.FC = () => {
         <Typography variant="body1" sx={{ margin: "10px 0" }}>
           Already have an account? <StyledLink to="/login">Login</StyledLink>
         </Typography>
-        <Button type="submit" variant="contained" fullWidth>
+        <Button
+          disabled={isLoading}
+          type="submit"
+          variant="contained"
+          fullWidth
+        >
           Signup
         </Button>
       </form>

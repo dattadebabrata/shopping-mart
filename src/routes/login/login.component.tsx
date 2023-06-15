@@ -7,13 +7,14 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 // import { signInWithGooglePopup } from "../../utils/firebase/firebase.utils";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   googleSignInStart,
   emailSignInStart,
 } from "../../store/user/user.action";
 
 const Login: React.FC = () => {
+  const { isLoading } = useSelector((store: any) => store.user);
   const dispatch = useDispatch();
   const validationSchema = Yup.object({
     email: Yup.string().email("Invalid email").required("Email is required"),
@@ -86,11 +87,17 @@ const Login: React.FC = () => {
         <Typography variant="body1" sx={{ margin: "10px 0" }}>
           Don't have an account? <StyledLink to="/signup">Signup</StyledLink>
         </Typography>
-        <Button type="submit" variant="contained" fullWidth>
+        <Button
+          disabled={isLoading}
+          type="submit"
+          variant="contained"
+          fullWidth
+        >
           Login
         </Button>
       </form>
       <Button
+        disabled={isLoading}
         variant="text"
         fullWidth
         sx={{ marginTop: "20px" }}
