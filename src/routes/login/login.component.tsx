@@ -8,7 +8,10 @@ import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 // import { signInWithGooglePopup } from "../../utils/firebase/firebase.utils";
 import { useDispatch } from "react-redux";
-import { googleSignInStart } from "../../store/user/user.action";
+import {
+  googleSignInStart,
+  emailSignInStart,
+} from "../../store/user/user.action";
 
 const Login: React.FC = () => {
   const dispatch = useDispatch();
@@ -23,8 +26,12 @@ const Login: React.FC = () => {
       email: "",
       password: "",
     },
-    onSubmit: (values) => {
-      console.log(values);
+    onSubmit: async (values) => {
+      try {
+        dispatch(emailSignInStart(values));
+      } catch (error) {
+        console.log("User Sign In Failed", error);
+      }
     },
     validateOnBlur: true,
     validationSchema,

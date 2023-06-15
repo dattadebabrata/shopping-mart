@@ -3,7 +3,7 @@ import { User } from "firebase/auth";
 
 import { USER_ACTION_TYPES } from "./user.types";
 
-import { signInSuccess, signInFailed } from "./user.action";
+import { signInSuccess, signInFailed, emailSignInStart } from "./user.action";
 
 import {
   getCurrentUser,
@@ -45,10 +45,30 @@ export function* signInWithGoogle() {
   }
 }
 
+export function* signInWithEmail({ payload: { email, password } }: any) {
+  try {
+    const userCredential = yield* call(
+      signInAuthUserWithEmailAndPassword,
+      email,
+      password
+    );
+    console.log(userCredential);
+    if (userCredential) {
+      const { user } = userCredential;
+      yield* call(getSnapshotFromUserAuth, user);
+    }
+  } catch (error) {
+    yield* put(signInFailed(error as Error));
+  }
+}
 export function* onGoogleSignInStart() {
   yield* takeLatest(USER_ACTION_TYPES.GOOGLE_SIGN_IN_START, signInWithGoogle);
 }
 
+export function* onEmailSignInStart() {
+  yield* takeLatest(USER_ACTION_TYPES.EMAIL_SIGN_IN_START, signInWithEmail);
+}
+
 export function* userSagas() {
-  yield* all([call(onGoogleSignInStart)]);
+  yield* all([call(onGoogleSignInStart), call(onEmailSignInStart)]);
 }

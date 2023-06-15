@@ -42,6 +42,12 @@ export const userReducer = (state = INITIAL_STATE, action: AnyAction) => {
         error: false,
         currentUser: payload,
       };
+    case USER_ACTION_TYPES.SIGN_IN_FAILED:
+      return {
+        ...state,
+        isLoading: false,
+        error: payload,
+      };
     default:
       return state;
   }
