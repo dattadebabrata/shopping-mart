@@ -3,7 +3,7 @@ import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 
 interface StyledProps {
-  isopen: boolean;
+  open: boolean;
 }
 
 const CategoryDropdown = ({
@@ -17,19 +17,19 @@ const CategoryDropdown = ({
     onClose(false);
   };
   return (
-    <DropdownConteiner isopen={isOpen}>
+    <DropdownConteiner open={isOpen}>
       <Link to="/mens">
-        <CustomButton onClick={handleClose} isopen={isOpen} fullWidth>
+        <CustomButton onClick={handleClose} open={isOpen} fullWidth>
           Mens
         </CustomButton>
       </Link>
       <Link to="/womens">
-        <CustomButton onClick={handleClose} isopen={isOpen} fullWidth>
+        <CustomButton onClick={handleClose} open={isOpen} fullWidth>
           Womens
         </CustomButton>
       </Link>
       <Link to="/kids">
-        <CustomButton onClick={handleClose} isopen={isOpen} fullWidth>
+        <CustomButton onClick={handleClose} open={isOpen} fullWidth>
           Kids
         </CustomButton>
       </Link>
@@ -47,8 +47,8 @@ const DropdownConteiner = styled.div<StyledProps>`
   transform: translateX(-50%);
   width: 200px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  max-height: ${(props) => (props.isopen ? "200px" : 0)};
-  visibility: ${(props) => (props.isopen ? "visible" : "hidden")};
+  max-height: ${(props) => (props.open ? "200px" : 0)};
+  visibility: ${(props) => (props.open ? "visible" : "hidden")};
   transition: 0.3s ease-in-out;
   overflow: hidden;
 `;
