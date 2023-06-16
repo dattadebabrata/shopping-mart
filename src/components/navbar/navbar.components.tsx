@@ -18,6 +18,7 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import { getCartQuantity } from "../../utils/getCartQuantity";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
+import CategoryDropdown from "../category-dropdown/category-dropdown.component";
 import { HiMenuAlt2 } from "react-icons/hi";
 import { FaShoppingCart } from "react-icons/fa";
 import { AiFillHome } from "react-icons/ai";
@@ -36,6 +37,7 @@ const Navbar = () => {
   const { currentUser } = user;
   console.log(currentUser);
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
+  const [productMenu, setProductMenu] = React.useState(false);
   const toggleDrawer = (open: any) => (event: any) => {
     if (
       event.type === "keydown" &&
@@ -51,6 +53,10 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const handleDropdownMenu = () => {
     setIsOpen((prevState) => !prevState);
+  };
+
+  const handleDropdownProducts = () => {
+    setProductMenu((prev) => !prev);
   };
 
   const handleLogOut = () => {
@@ -73,9 +79,24 @@ const Navbar = () => {
             <Link to={"/"}>
               <StyledButton color="inherit">Home</StyledButton>
             </Link>
-            <Link to={"/allproducts"}>
-              <StyledButton color="inherit">All Products</StyledButton>
-            </Link>
+            <ClickAwayListener onClickAway={() => setProductMenu(false)}>
+              <Box
+                sx={{
+                  display: "inline",
+                  margin: 0,
+                  padding: 0,
+                  position: "relative",
+                }}
+              >
+                <StyledButton onClick={handleDropdownProducts} color="inherit">
+                  All Products
+                </StyledButton>
+                <CategoryDropdown
+                  isOpen={productMenu}
+                  onClose={setProductMenu}
+                />
+              </Box>
+            </ClickAwayListener>
             <Link to={"/wishlist"}>
               <StyledButton color="inherit">Wish List</StyledButton>
             </Link>
