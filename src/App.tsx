@@ -6,6 +6,8 @@ import NavBar from "./components/navbar/navbar.components";
 import WishList from "./routes/wishlist/wishlist.component";
 import Signup from "./routes/signup/signup.component";
 import Login from "./routes/login/login.component";
+import Account from "./routes/account/account.component";
+import PrivateRoute from "./routes/private-route/private-route.component";
 import { Snackbar } from "@mui/material";
 import { useSelector } from "react-redux";
 
@@ -37,13 +39,21 @@ function App() {
         onClose={handleClose}
         message={toastMessage}
         key={"top" + "center"}
-        autoHideDuration={6000}
+        autoHideDuration={2000}
       />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/wishlist" element={<WishList />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        <Route
+          path="/account"
+          element={
+            <PrivateRoute>
+              <Account />
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </div>
   );
