@@ -8,7 +8,7 @@ const Home: React.FC = () => {
   const { sliding_images, best_sellers, deals_of_the_day } = db;
   return (
     <div>
-      <StyledContainer>F
+      <StyledContainer>
         <Carousal imageList={sliding_images} intervalTime={5000} />
       </StyledContainer>
       <StyledContainer>
