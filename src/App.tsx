@@ -9,6 +9,8 @@ import Login from "./routes/login/login.component";
 import Account from "./routes/account/account.component";
 import PrivateRoute from "./routes/private-route/private-route.component";
 import Mens from "./routes/mens/Mens.component";
+import Womens from "./routes/womens/womens.component";
+import Kids from "./routes/kids/kids.component";
 import { Snackbar } from "@mui/material";
 import { useSelector } from "react-redux";
 
@@ -56,6 +58,8 @@ function App() {
           }
         />
         <Route path="/mens" element={<Mens />} />
+        <Route path="/womens" element={<Womens />} />
+        <Route path="/kids" element={<Kids />} />
       </Routes>
     </div>
   );
