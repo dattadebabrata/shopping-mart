@@ -59,7 +59,6 @@ export function* signInWithEmail({ payload: { email, password } }: any) {
       email,
       password
     );
-    console.log(userCredential);
     if (userCredential) {
       const { user } = userCredential;
       yield* call(getSnapshotFromUserAuth, user);

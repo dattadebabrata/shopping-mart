@@ -4,7 +4,7 @@ import { useFormik } from "formik";
 import { TextField, Typography, Button } from "@mui/material";
 import * as Yup from "yup";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 // import { signInWithGooglePopup } from "../../utils/firebase/firebase.utils";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,7 +14,8 @@ import {
 } from "../../store/user/user.action";
 
 const Login: React.FC = () => {
-  const { isLoading } = useSelector((store: any) => store.user);
+  const { isLoading, currentUser } = useSelector((store: any) => store.user);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const validationSchema = Yup.object({
     email: Yup.string().email("Invalid email").required("Email is required"),
@@ -27,12 +28,8 @@ const Login: React.FC = () => {
       email: "",
       password: "",
     },
-    onSubmit: async (values) => {
-      try {
-        dispatch(emailSignInStart(values));
-      } catch (error) {
-        console.log("User Sign In Failed", error);
-      }
+    onSubmit: (values) => {
+      dispatch(emailSignInStart(values));
     },
     validateOnBlur: true,
     validationSchema,
@@ -40,6 +37,9 @@ const Login: React.FC = () => {
   const handleGoogleLogin = () => {
     dispatch(googleSignInStart());
   };
+  if (currentUser) {
+    navigate("/");
+  }
   return (
     <FormContainer title="Login">
       <form onSubmit={formik.handleSubmit}>
