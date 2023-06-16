@@ -8,6 +8,7 @@ import Signup from "./routes/signup/signup.component";
 import Login from "./routes/login/login.component";
 import Account from "./routes/account/account.component";
 import PrivateRoute from "./routes/private-route/private-route.component";
+import Mens from "./routes/mens/Mens.component";
 import { Snackbar } from "@mui/material";
 import { useSelector } from "react-redux";
 
@@ -54,6 +55,7 @@ function App() {
             </PrivateRoute>
           }
         />
+        <Route path="/mens" element={<Mens />} />
       </Routes>
     </div>
   );

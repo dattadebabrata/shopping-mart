@@ -86,5 +86,81 @@
       "tags": ["Round Neck", "Polyester"],
       "exclusive": "Good Deals"
     }
+  ],
+  "mens": [
+    {
+      "id": 7,
+      "title": "Men Solid Round Neck Polyester T-Shirt",
+      "image_url": "https://rukminim1.flixcart.com/image/612/612/xif0q/shirt/3/j/v/xxl-st10-vebnor-original-imagnvrqgv7e5crg.jpeg?q=70",
+      "price": 449,
+      "mrp": 500,
+      "tags": ["Solid", "Round Neck"],
+      "exclusive": "Hot Deals"
+    },
+    {
+      "id": 8,
+      "title": "Men Solid Round Neck Polyester T-Shirt",
+      "image_url": "https://rukminim1.flixcart.com/image/612/612/xif0q/shirt/h/h/4/xl-st10-vebnor-original-imagnedycgmr2z3p.jpeg?q=70",
+      "price": 449,
+      "mrp": 500,
+      "tags": ["Solid", "Round Neck"]
+    },
+    {
+      "id": 9,
+      "title": "Men Solid Round Neck Polyester T-Shirt",
+      "image_url": "https://rukminim1.flixcart.com/image/612/612/xif0q/shirt/p/2/k/l-ssnew23shrt-pncr2c-m-pln-blol-campus-sutra-original-imagzcq7hgteuq5g.jpeg?q=70",
+      "price": 449,
+      "mrp": 500,
+      "tags": ["Solid", "Round Neck"]
+    },
+    {
+      "id": 10,
+      "title": "Men Solid Round Neck Polyester T-Shirt",
+      "image_url": "https://rukminim1.flixcart.com/image/612/612/xif0q/shirt/r/9/n/xxl-patta-14-jai-textiles-original-imagn2fzpawqukgq.jpeg?q=70",
+      "price": 199,
+      "mrp": 500,
+      "tags": ["Solid", "Round Neck"]
+    },
+    {
+      "id": 11,
+      "title": "Men Solid Round Neck Polyester T-Shirt",
+      "image_url": "https://rukminim1.flixcart.com/image/612/612/xif0q/shirt/e/b/6/m-men-slim-fit-printed-spread-collar-casual-shirt-qugue-original-imagjhg2zhgu3fpa.jpeg?q=70",
+      "price": 419,
+      "mrp": 500,
+      "tags": ["Solid", "Round Neck"]
+    },
+    {
+      "id": 12,
+      "title": "Men Round Neck Polyester T-Shirt",
+      "image_url": "https://rukminim1.flixcart.com/image/612/612/xif0q/shirt/r/e/q/xxl-st10-vebnor-original-imagzezrqcgghjjg.jpeg?q=70",
+      "price": 449,
+      "mrp": 500,
+      "tags": ["Solid", "Round Neck"]
+    },
+    {
+      "id": 13,
+      "title": "Men Solid Neck Polyester T-Shirt",
+      "image_url": "https://rukminim1.flixcart.com/image/612/612/xif0q/shirt/s/m/y/m-st1-vebnor-original-imagn69kcwphkfrf.jpeg?q=70",
+      "price": 349,
+      "mrp": 500,
+      "tags": ["Solid", "Round Neck"]
+    },
+    {
+      "id": 14,
+      "title": "Men Solid Round Neck T-Shirt",
+      "image_url": "https://rukminim1.flixcart.com/image/612/612/xif0q/shirt/h/z/k/xl-st1-vebnor-original-imagn7hdhtgpghjk.jpeg?q=70",
+      "price": 125,
+      "mrp": 500,
+      "tags": ["Solid", "Round Neck"],
+      "exclusive": "Best Seller"
+    },
+    {
+      "id": 15,
+      "title": "Men Solid Round Neck Polyester",
+      "image_url": "https://rukminim1.flixcart.com/image/612/612/xif0q/shirt/v/u/c/m-sh-chi-10-u-turn-original-imagzyennvmcfndz.jpeg?q=70",
+      "price": 339,
+      "mrp": 500,
+      "tags": ["Solid", "Round Neck"]
+    }
   ]
 }
