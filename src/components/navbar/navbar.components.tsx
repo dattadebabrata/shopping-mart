@@ -79,9 +79,9 @@ const Navbar = () => {
             <Link to={"/wishlist"}>
               <StyledButton color="inherit">Wish List</StyledButton>
             </Link>
-            <Link to={"/account"}>
-              <StyledButton color="inherit">Account</StyledButton>
-            </Link>
+            {/*<Link to={"/account"}>*/}
+            {/*  <StyledButton color="inherit">Account</StyledButton>*/}
+            {/*</Link>*/}
           </RowLinks>
           <RowLinks>
             <ClickAwayListener onClickAway={() => setIsOpen(false)}>
@@ -111,9 +111,11 @@ const Navbar = () => {
             </ClickAwayListener>
             {currentUser ? (
               <>
-                <StyledButton color="inherit">
-                  {currentUser.displayName}
-                </StyledButton>
+                <Link to="/account">
+                  <StyledButton color="inherit">
+                    {currentUser.displayName}
+                  </StyledButton>
+                </Link>
                 <StyledButton onClick={handleLogOut} color="inherit">
                   Logout
                 </StyledButton>
