@@ -21,6 +21,7 @@ import {
   removeItemFromCart,
 } from "../../store/cart/cart.action";
 import { addRemoveToWishList } from "../../store/wishlist/wishlist.action";
+import { Link } from "react-router-dom";
 
 export interface ProductType {
   id: number;
@@ -31,10 +32,11 @@ export interface ProductType {
   tags: string[];
   exclusive?: string | undefined;
   quantity?: number;
+  category?: string;
 }
 
 const ProductCard: React.FC<ProductType> = (props) => {
-  const { id, title, image_url, price, mrp, tags, exclusive } = props;
+  const { id, title, image_url, price, mrp, tags, exclusive, category } = props;
   const dispatch = useDispatch();
   const { cart } = useSelector((store: any) => store.cart);
   const { wishlist } = useSelector((store: any) => store.wishlist);
@@ -51,9 +53,11 @@ const ProductCard: React.FC<ProductType> = (props) => {
   };
   return (
     <Card sx={{ maxWidth: 400, margin: "auto" }}>
-      <CardMedia sx={{ height: 330 }} image={image_url} title="Product">
-        {exclusive && <TagChip label={exclusive} color="success" />}
-      </CardMedia>
+      <Link to={`/product/${category}/${id}`}>
+        <CardMedia sx={{ height: 330 }} image={image_url} title="Product">
+          {exclusive && <TagChip label={exclusive} color="success" />}
+        </CardMedia>
+      </Link>
       <Divider />
       <StyledCardContent>
         <Tooltip title={title} followCursor>
