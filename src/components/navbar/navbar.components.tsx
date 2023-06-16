@@ -35,7 +35,6 @@ const Navbar = () => {
   const { cart: userCart, user } = useSelector((store: any) => store);
   const { cart } = userCart;
   const { currentUser } = user;
-  console.log(currentUser);
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
   const [productMenu, setProductMenu] = React.useState(false);
   const toggleDrawer = (open: any) => (event: any) => {
