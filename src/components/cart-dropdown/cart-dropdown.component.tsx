@@ -111,11 +111,10 @@ const Container = styled.div<ContainerProps>`
   position: absolute;
   padding: 3px;
   top: 44px;
-  left: 50%;
+  left: 18%;
   transform: translate(-50%, 0);
-  //width: 250px;
-  width: ${({ open }) => (open ? "250px" : "0")};
-  height: auto;
+  width: 250px;
+  max-height: ${({ open }) => (open ? "392px" : "0")};
   z-index: 1;
   border-radius: 4px;
   background-color: white;
