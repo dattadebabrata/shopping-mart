@@ -42,12 +42,14 @@ const Container = styled.div<StyledProps>`
   position: absolute;
   z-index: 1;
   width: 300px;
+  top: 51px;
+  left: 70px;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 5px;
   padding: 10px;
   max-height: ${({ open }) => (open ? "400px" : 0)};
-  border: 1px solid black;
+  //border: 1px solid black;
   transition: 0.3s linear;
   visibility: ${({ open }) => (open ? "visible" : "hidden")};
   overflow: scroll;

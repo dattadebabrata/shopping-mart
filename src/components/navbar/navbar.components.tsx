@@ -69,16 +69,18 @@ const Navbar = () => {
     <>
       <StyledNavbar>
         <StyledToolbar>
-          <Link to={"/"}>
-            <StyledBox>
-              <img
-                src="https://bloggytalky.com/wp-content/uploads/2017/07/create-a-free-logo-design-logo-designs-design-a-free-logo-design-a-free-logo-alltech-just-free-logo-design.png"
-                alt="logo"
-              />
-            </StyledBox>
-          </Link>
-          <RowLinks>
+          <LogoSearchContainer>
+            <Link to={"/"}>
+              <StyledBox>
+                <img
+                  src="https://bloggytalky.com/wp-content/uploads/2017/07/create-a-free-logo-design-logo-designs-design-a-free-logo-design-a-free-logo-alltech-just-free-logo-design.png"
+                  alt="logo"
+                />
+              </StyledBox>
+            </Link>
             <SearchBar />
+          </LogoSearchContainer>
+          <RowLinks>
             <Link to={"/"}>
               <StyledButton color="inherit">Home</StyledButton>
             </Link>
@@ -330,6 +332,12 @@ const MenuBar = styled(HiMenuAlt2)`
     margin-right: 10px;
     height: auto;
   }
+`;
+
+const LogoSearchContainer=styled(RowLinks)`
+  display: flex;
+  align-items: center;
+  gap: 10px;
 `;
 
 export default Navbar;

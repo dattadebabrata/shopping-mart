@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Input } from "@mui/material";
 import db from "../../db.json";
 import SearchDropdown from "../search-dropdown/search-dropdown.component";
+import { BiSearchAlt2 } from "react-icons/bi";
 
 const SearchBar: React.FC = () => {
   const [searchField, setSearchField] = useState("");
@@ -25,18 +26,21 @@ const SearchBar: React.FC = () => {
   };
   return (
     <>
-      <StyledSearchBar
-        value={searchField}
-        onChange={handleSearchChange}
-        onBlur={handleClose}
-        onFocus={handleOpen}
-        placeholder="Search Items"
-        sx={{
-          backgroundColor: "white",
-          borderRadius: "4px",
-          padding: "0 8px",
-        }}
-      />
+      <Container>
+        <StyledSearchBar
+          value={searchField}
+          onChange={handleSearchChange}
+          onBlur={handleClose}
+          onFocus={handleOpen}
+          placeholder="Search Items"
+          sx={{
+            backgroundColor: "white",
+            borderRadius: "4px",
+            padding: "0 8px",
+          }}
+        />
+        <SearchIcon />
+      </Container>
       <SearchDropdown
         isOpen={isOpen && searchField !== ""}
         items={searchedItems}
@@ -50,6 +54,9 @@ export default SearchBar;
 const StyledSearchBar = styled(Input)`
   && {
     width: 300px;
+    height: 45px;
+    padding-right: 30px;
+    font-size: 18px;
     @media (max-width: 1035px) {
       width: 250px;
     }
@@ -60,4 +67,22 @@ const StyledSearchBar = styled(Input)`
       display: none;
     }
   }
+`;
+
+const Container = styled.div`
+  //border: 1px solid red;
+  position: relative;
+`;
+
+const SearchIcon=styled(BiSearchAlt2)`
+    &&{
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 2px;
+      color: #2874ef;
+      
+      height: 25px;
+      width: 25px;
+    }
 `;
