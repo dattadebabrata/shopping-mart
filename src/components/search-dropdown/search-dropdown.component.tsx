@@ -16,7 +16,7 @@ interface StyledProps {
 const SearchDropdown: React.FC<SearchDropdownProps> = ({ isOpen, items }) => {
   return (
     <Container open={isOpen}>
-      {items.map((item) => {
+      {items.length>0? items.map((item) => {
         return (
           <StyledLink to={`/product/${item.category}/${item.id}`} key={item.id}>
             <Item>
@@ -31,7 +31,7 @@ const SearchDropdown: React.FC<SearchDropdownProps> = ({ isOpen, items }) => {
             </Item>
           </StyledLink>
         );
-      })}
+      }):<Typography color="primary">No Items found</Typography>}
     </Container>
   );
 };
@@ -46,7 +46,7 @@ const Container = styled.div<StyledProps>`
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 5px;
   padding: 10px;
-  height: ${({ open }) => (open ? "400px" : 0)};
+  max-height: ${({ open }) => (open ? "400px" : 0)};
   border: 1px solid black;
   transition: 0.3s linear;
   visibility: ${({ open }) => (open ? "visible" : "hidden")};
