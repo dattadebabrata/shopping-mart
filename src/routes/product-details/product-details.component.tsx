@@ -24,7 +24,7 @@ const ProductDetails: React.FC = () => {
         setItemDetails(item);
       }
     }
-  }, []);
+  }, [id, category]);
 
   console.log(itemDetails);
 
@@ -62,9 +62,9 @@ const ProductDetails: React.FC = () => {
         </Card>
       ) : (
         <div>
-            <Typography gutterBottom variant="h5" component="div">
-                The item you are looking for is not available
-            </Typography>
+          <Typography gutterBottom variant="h5" component="div">
+            The item you are looking for is not available
+          </Typography>
           <Link to="/">
             <Button variant="contained">Go Back</Button>
           </Link>
