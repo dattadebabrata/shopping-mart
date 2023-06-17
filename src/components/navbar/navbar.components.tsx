@@ -14,6 +14,8 @@ import {
   Badge,
   ListItemIcon,
   ClickAwayListener,
+  TextField,
+  Input,
 } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { getCartQuantity } from "../../utils/getCartQuantity";
@@ -29,6 +31,7 @@ import { SiGravatar } from "react-icons/si";
 import { BiLogOut } from "react-icons/bi";
 import { signOutStart } from "../../store/user/user.action";
 import { Link } from "react-router-dom";
+import SearchBar from "../search-bar/search-bar.component";
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -75,6 +78,7 @@ const Navbar = () => {
             </StyledBox>
           </Link>
           <RowLinks>
+            <SearchBar />
             <Link to={"/"}>
               <StyledButton color="inherit">Home</StyledButton>
             </Link>
