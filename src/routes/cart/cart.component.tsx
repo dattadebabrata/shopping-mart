@@ -9,6 +9,8 @@ import {
 } from "../../store/cart/cart.action";
 import CartItem from "../../components/cart-item/cart-item.component";
 import { ProductType } from "../../components/productCard/productCard.component";
+import TotalItemCalcualte from "../../components/total-item-calculate/total-item-calculate.component";
+import { Link } from "react-router-dom";
 
 const Cart: React.FC = () => {
   const dispatch = useDispatch();
@@ -29,7 +31,15 @@ const Cart: React.FC = () => {
             <CartItem {...item} />
           ))}
         </CartContainer>
-        <TotalContainer></TotalContainer>
+        <TotalContainer>
+          <TotalItemCalcualte>
+            <Link to="/checkout">
+              <Button fullWidth variant="contained">
+                Checkout
+              </Button>
+            </Link>
+          </TotalItemCalcualte>
+        </TotalContainer>
       </Container>
     </StyledContainer>
   );
@@ -49,7 +59,5 @@ const CartContainer = styled.div`
   padding: 5px;
 `;
 const TotalContainer = styled.div`
-  border: 1px solid blue;
-  height: 200px;
   width: calc(100% - 65%);
 `;
