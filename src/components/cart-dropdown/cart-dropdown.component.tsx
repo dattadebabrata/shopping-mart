@@ -15,7 +15,10 @@ import { Link } from "react-router-dom";
 interface ContainerProps {
   open: boolean;
 }
-const CartDropdown: React.FC<{ isOpen: boolean }> = ({ isOpen }) => {
+const CartDropdown: React.FC<{
+  isOpen: boolean;
+  onClose: React.Dispatch<React.SetStateAction<boolean>>;
+}> = ({ isOpen, onClose }) => {
   const { cart } = useSelector((store: any) => store.cart);
   const dispatch = useDispatch();
   const handleAddToCart = (item: ProductType) => {
@@ -26,6 +29,10 @@ const CartDropdown: React.FC<{ isOpen: boolean }> = ({ isOpen }) => {
   };
   const handleRemoveSelectedItem = (item: ProductType) => {
     dispatch(removeSelectedItem(cart, item));
+  };
+
+  const handleClose = () => {
+    onClose(false);
   };
   return (
     <Container open={isOpen}>
@@ -91,8 +98,12 @@ const CartDropdown: React.FC<{ isOpen: boolean }> = ({ isOpen }) => {
             })}
           </Box>
           <Link to="/cart">
-            <Button variant="contained" sx={{ width: "100%" }}>
-              Checkout
+            <Button
+              onClick={handleClose}
+              variant="contained"
+              sx={{ width: "100%" }}
+            >
+              Cart
             </Button>
           </Link>
         </>

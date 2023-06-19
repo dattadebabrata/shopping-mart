@@ -132,7 +132,7 @@ const Navbar = () => {
                     <ShoppingCart />
                   </Badge>
                 </Button>
-                <CartDropdown isOpen={isOpen} />
+                <CartDropdown onClose={setIsOpen} isOpen={isOpen} />
               </Box>
             </ClickAwayListener>
             {currentUser ? (
@@ -334,7 +334,7 @@ const MenuBar = styled(HiMenuAlt2)`
   }
 `;
 
-const LogoSearchContainer=styled(RowLinks)`
+const LogoSearchContainer = styled(RowLinks)`
   display: flex;
   align-items: center;
   gap: 10px;
