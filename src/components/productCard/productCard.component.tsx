@@ -13,7 +13,7 @@ import {
   Tooltip,
 } from "@mui/material";
 import { BsHeart, BsHeartFill } from "react-icons/bs";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { calculateDiscount } from "../../utils/discountCalculator";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -89,11 +89,7 @@ const ProductCard: React.FC<ProductType> = (props) => {
             })}
           </Box>
           <IconButton onClick={handleWishlist} aria-label="add to favorites">
-            {alreadyWishlist ? (
-              <BsHeartFill color="red" />
-            ) : (
-              <BsHeart color="red" />
-            )}
+            {alreadyWishlist ? <HeartFill /> : <Heart />}
           </IconButton>
         </Stack>
         <Stack
@@ -201,5 +197,27 @@ export const AlreadyInCart = styled(Stack)`
     height: 29.5px;
     border-radius: 4px;
     justify-content: space-between;
+  }
+`;
+
+const scaleAnimation = keyframes`
+  from {
+    transform: scale(1.5);
+  }
+  to {
+    transform: scale(1);
+  }
+`;
+
+const Heart = styled(BsHeart)`
+  && {
+    color: red;
+    animation: ${scaleAnimation} 100ms linear;
+  }
+`;
+const HeartFill = styled(BsHeartFill)`
+  && {
+    color: red;
+    animation: ${scaleAnimation} 100ms linear;
   }
 `;
