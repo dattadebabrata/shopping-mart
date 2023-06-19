@@ -96,7 +96,7 @@ const Checkout: React.FC = () => {
           <TotalItemCalculate>
             <Link to="/checkout">
               <Button fullWidth variant="contained" onClick={handleSubmit}>
-                Checkout
+                Place Order
               </Button>
             </Link>
           </TotalItemCalculate>
