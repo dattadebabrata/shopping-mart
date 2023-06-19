@@ -50,6 +50,10 @@ export default Cart;
 const Container = styled.div`
   display: flex;
   justify-content: center;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const CartContainer = styled.div`
@@ -57,7 +61,13 @@ const CartContainer = styled.div`
   width: 65%;
   overflow: scroll;
   padding: 5px;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 `;
 const TotalContainer = styled.div`
   width: calc(100% - 65%);
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 `;
