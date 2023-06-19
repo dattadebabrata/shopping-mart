@@ -61,7 +61,10 @@ const CartItem: React.FC<ProductType> = (props) => {
         </Typography>
         <Typography align="left">Price: {price}</Typography>
         <Typography align="left">
-          Quantity x Price: {quantity ? quantity * price : 0 * price}
+          Total Price: {quantity ? quantity * price : 0 * price}
+        </Typography>
+        <Typography align="left">
+          Total MRP: {quantity ? quantity * mrp : 0 * price}
         </Typography>
         <AlreadyInCart
           direction="row"
@@ -101,7 +104,9 @@ const CartItem: React.FC<ProductType> = (props) => {
             onClick={handleWishlist}
             variant="contained"
             color="primary"
-            endIcon={alreadyWishlist ? <AiFillHeart color='red' /> : <AiOutlineHeart />}
+            endIcon={
+              alreadyWishlist ? <AiFillHeart color="red" /> : <AiOutlineHeart />
+            }
           >
             Save for Later
           </Button>
@@ -118,7 +123,8 @@ const CartItemContainer = styled.div`
   width: 100%;
   height: 200px;
   border-radius: 7px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   display: flex;
 `;
 const ImageContainer = styled.div`
