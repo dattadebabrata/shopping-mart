@@ -59,11 +59,31 @@ const Checkout: React.FC = () => {
       <Container>
         <FormContainer>
           <form noValidate>
-            <TextInput formik={formik} name="name" label="Name" />
-            <TextInput formik={formik} name="mobile" label="Mobile" />
-            <TextInput formik={formik} name="address" label="Address" />
-            <TextInput formik={formik} name="pincode" label="Pincode" />
-            <TextInput formik={formik} name="landmark" label="Landmark" />
+            <TextInput formik={formik} type="text" name="name" label="Name" />
+            <TextInput
+              formik={formik}
+              type="number"
+              name="mobile"
+              label="Mobile"
+            />
+            <TextInput
+              formik={formik}
+              type="text"
+              name="address"
+              label="Address"
+            />
+            <TextInput
+              formik={formik}
+              type="number"
+              name="pincode"
+              label="Pincode"
+            />
+            <TextInput
+              formik={formik}
+              type="text"
+              name="landmark"
+              label="Landmark"
+            />
             <SelectInput
               formik={formik}
               name="state"

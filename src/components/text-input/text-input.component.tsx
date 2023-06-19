@@ -5,15 +5,17 @@ interface TextInputProps {
   formik: any;
   name: string;
   label: string;
+  type: string;
 }
 
-const TextInput: React.FC<TextInputProps> = ({ formik, name, label }) => {
+const TextInput: React.FC<TextInputProps> = ({ formik, name, type, label }) => {
   return (
     <div>
       <TextField
         onChange={formik.handleChange}
         value={formik.values[name]}
         onBlur={formik.handleBlur}
+        type={type}
         name={name}
         label={`${
           formik.errors[name] && formik.touched[name]
