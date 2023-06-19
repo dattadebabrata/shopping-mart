@@ -15,6 +15,7 @@ import ProductDetails from "./routes/product-details/product-details.component";
 import { Snackbar } from "@mui/material";
 import { useSelector } from "react-redux";
 import Cart from "./routes/cart/cart.component";
+import Checkout from "./routes/checkout/checkout.component";
 
 function App() {
   const { currentUser, error } = useSelector((store: any) => store.user);
@@ -64,6 +65,7 @@ function App() {
         <Route path="/kids" element={<Kids />} />
         <Route path="/product/:category/:id" element={<ProductDetails />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<Checkout />} />
       </Routes>
     </div>
   );

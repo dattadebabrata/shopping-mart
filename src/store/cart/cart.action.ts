@@ -57,3 +57,9 @@ export const removeSelectedItem = (cartItems: any, itemToRemove: any) => {
     payload: newCartItem,
   };
 };
+
+export const makeCartEmpty = () => {
+  return {
+    type: cartTypes.MAKE_CART_EMPTY,
+  };
+}
