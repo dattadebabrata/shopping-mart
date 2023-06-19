@@ -19,6 +19,7 @@ import Checkout from "./routes/checkout/checkout.component";
 
 function App() {
   const { currentUser, error } = useSelector((store: any) => store.user);
+  const { message, time } = useSelector((store: any) => store.cart);
   const [toastMessage, setToastMessage] = React.useState("");
   useEffect(() => {
     if (currentUser) {
@@ -27,6 +28,13 @@ function App() {
       setToastMessage(error.code);
     }
   }, [currentUser, error]);
+
+  useEffect(() => {
+    if (message) {
+      setToastMessage(message);
+    }
+  }, [message, time]);
+
   const handleClose = (
     event?: React.SyntheticEvent | Event,
     reason?: string
@@ -65,7 +73,14 @@ function App() {
         <Route path="/kids" element={<Kids />} />
         <Route path="/product/:category/:id" element={<ProductDetails />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/checkout" element={<Checkout />} />
+        <Route
+          path="/checkout"
+          element={
+            <PrivateRoute>
+              <Checkout />
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </div>
   );

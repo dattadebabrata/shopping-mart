@@ -3,7 +3,7 @@ import { StyledContainer } from "../home/home.component";
 import { Typography, Button, TextField } from "@mui/material";
 import TotalItemCalculate from "../../components/total-item-calculate/total-item-calculate.component";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import TextInput from "../../components/text-input/text-input.component";
@@ -14,6 +14,7 @@ import { makeCartEmpty } from "../../store/cart/cart.action";
 
 const Checkout: React.FC = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { states } = db;
   const validationSchema = Yup.object({
     name: Yup.string().required("Name is required"),
@@ -38,6 +39,7 @@ const Checkout: React.FC = () => {
     },
     onSubmit: async (values) => {
       dispatch(makeCartEmpty());
+      navigate("/");
     },
     validateOnBlur: true,
     validationSchema,
@@ -90,10 +92,18 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   gap: 15px;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const TotalContainer = styled.div`
   width: calc(100% - 65%);
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const FormContainer = styled.div`

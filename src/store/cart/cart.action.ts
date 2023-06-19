@@ -60,6 +60,6 @@ export const removeSelectedItem = (cartItems: any, itemToRemove: any) => {
 
 export const makeCartEmpty = () => {
   return {
-    type: cartTypes.MAKE_CART_EMPTY,
+    type: cartTypes.CLEAR_CART,
   };
-}
+};

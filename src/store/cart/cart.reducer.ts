@@ -2,6 +2,8 @@ import { AnyAction } from "redux";
 import { cartTypes } from "./cart.types";
 const INITIAL_STATE = {
   cart: [],
+  message: "",
+  time: new Date(),
 };
 
 export const cartReducer = (state = INITIAL_STATE, action: AnyAction) => {
@@ -26,6 +28,8 @@ export const cartReducer = (state = INITIAL_STATE, action: AnyAction) => {
       return {
         ...state,
         cart: [],
+        message: "Your Order is Placed",
+        time: new Date(), //for dom update
       };
     default:
       return state;
