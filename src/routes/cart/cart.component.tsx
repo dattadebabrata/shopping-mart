@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { StyledContainer } from "../home/home.component";
-import { Typography, Button } from "@mui/material";
+import { Typography, Button, Chip } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import {
   addItemToCart,
@@ -23,7 +23,7 @@ const Cart: React.FC = () => {
         align="left"
         sx={{ textDecoration: "underline", margin: "20px 0" }}
       >
-        Cart : {cart.length}
+        <span>Cart </span> <Chip variant="outlined" sx={{marginLeft: "10px"}} label={cart.length} />
       </Typography>
       <Container>
         <CartContainer>
